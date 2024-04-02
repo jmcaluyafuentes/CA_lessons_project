@@ -4,3 +4,8 @@ h1 {
     margin: 1rem;
     border: 3px dashed red;
 }
+
+p {
+    padding: 2rem;
+    background: lightgray;
+}
