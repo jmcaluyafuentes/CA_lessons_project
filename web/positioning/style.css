@@ -18,11 +18,16 @@ div {
 
 div:nth-of-type(1) {
     background: green;
+    z-index: 1;
+    /* top: 200px; */
 }
 
 div:nth-of-type(2) {
+    /* position: absolute; */
     background: blue;
-    left: 100px;
+    right: 50px;
+    top: 0;
+    z-index: 1;
 }
 
 /* div:nth-of-type(even) {
