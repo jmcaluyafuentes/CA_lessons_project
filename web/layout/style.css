@@ -1,11 +1,28 @@
+/* @import "https://meyerweb.com/eric/tools/css/reset/reset.css" */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
 h1 {
     background-color: lightblue;
     padding: 2rem;
-    margin: 1rem;
+    margin: 2rem;
     border: 3px dashed red;
 }
 
 p {
-    padding: 2rem;
+    display: inline-block;
+    width: 50%;
+    height: 30vh;
+    padding: 1rem;
     background: lightgray;
+    float: left;
+    border: 1px solid black;
+}
+
+div {
+    width: 50%;
 }
