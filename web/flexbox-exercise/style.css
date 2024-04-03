@@ -1,9 +1,11 @@
-html {
-  font-family: sans-serif;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-body {
-  margin: 0;
+html {
+  font-family: sans-serif;
 }
 
 header {
@@ -18,10 +20,22 @@ h1 {
   margin: 0;
 }
 
+section {
+  display: flex;
+  flex-wrap: wrap;
+}
+
 article {
   padding: 10px;
   margin: 10px;
   background: aqua;
+  /* flex: calc((100% /3) - (10px * 2)); */
+  flex: 1 100px;
+}
+
+article:nth-of-type(2) {
+  /* flex: calc((100% / 2) - 20px); */
+  flex: 2 200px;
 }
 
 /* Add your flexbox CSS below here */
