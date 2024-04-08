@@ -1,0 +1,98 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.div1 {
+    width: 100px;
+    height: 100px;
+    background: salmon;
+    /* transition: width 1s, height 2s, background 3s; */
+    /* transition: all 1s; */
+    transition: width 1s ease;
+}
+
+.div1:hover {
+    width: 300px;
+    /* height: 200px; */
+    /* background: blue; */
+}
+
+.div2 {
+    position: relative;
+    left: -50px;
+    width: 100px;
+    height: 100px;
+    background: blue;
+    transition: left 1s;
+}
+
+.div2:hover {
+    left: 0;
+}
+
+.div3 {
+    width: 100px;
+    height: 100px;
+    background: purple;
+    transition: transform 1s;
+    transform: translateX(-75%);
+}
+
+.div3:hover {
+    transform: translateX(0);
+}
+.div4 {
+    width: 100px;
+    height: 100px;
+    background: pink;
+    transition: transform 1s;
+    transform: translateY(0);
+}
+
+.div4:hover {
+    transform: translateY(50%);
+}
+
+.div5 {
+    width: 100px;
+    height: 100px;
+    background: black;
+    transition: transform 1s;
+}
+
+.div5:hover {
+    transform: rotate(45deg);
+}
+.div6 {
+    width: 100px;
+    height: 100px;
+    background: brown;
+    transition: transform 1s;
+}
+
+.div6:hover {
+    transform: scale(0.5);
+}
+
+/* Application: hamburger menu */
+
+/* Application example: slide show in hero section
+    relative position;
+    absolute position;
+    left: 
+    right:
+    z index
+*/
+.div7 {
+    width: 100px;
+    height: 100px;
+    background: green;
+    transform: 1s;
+    animation: spin 3s infinite;
+}
+
+.div7:hover {
+    animation: two-colors 2s infinite ease;
+}
