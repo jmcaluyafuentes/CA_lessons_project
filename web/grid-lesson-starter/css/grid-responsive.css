@@ -1,0 +1,16 @@
+@import 'https://fonts.googleapis.com/css?family=Raleway:400,300,600';
+@import 'https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css';
+@import 'https://codepen.io/rachelandrew/pen/2e542701bf795240604e2b50b3bcf376.css';
+
+.wrapper {
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2fr 4fr;
+  grid-gap: 1rem 2rem;
+}
+
+.content {
+  padding-top: 2rem;
+}
