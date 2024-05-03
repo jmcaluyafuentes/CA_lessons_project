@@ -1,0 +1,14 @@
+[
+    {
+        "foo": "Cappucino",
+        "price": 6.5
+    },
+    {
+        "foo": "English Breakfast Tea",
+        "price": 5
+    },
+    {
+        "foo": "Blueberry Muffin",
+        "price": 6
+    }
+]
