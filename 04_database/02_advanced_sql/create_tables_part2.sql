@@ -10,16 +10,16 @@ create table categories (
 );
 
 create table items (
-    id serial primary key,
+    id serial primary key, -- the default constraint is 'not null' for primary key
 
     name varchar(100) not null,
     description text not null,
     -- default value will be used if a new item is created without specifying stock
     stock int default 0,
     -- category is now optional ("not null" constraint removed)
-    category_id integer,
+    category_id integer, -- the default constraint is 'null' if it is not specified
 
-    foreign key (category_id) references categories (id)
+    foreign key (category_id) references categories (id) on delete cascade
 );
 
 insert into categories (name, description) values 
