@@ -53,9 +53,20 @@ def db_create():
     # card3 = Card(title='Marshmallow', description='Stage 3 - Implement JSONify of models', date_created=date.today())
 
     cards = [
-        Card(title='Start the project', description='Stage 1 - Create ERD', date_created=date.today()),
-        Card(title='ORM Queries', description='Stage 2 - Implement CRUD', date_created=date.today()), 
-        Card(title='Marsmallow', description='Stage 3 - Implement JSONify of models', date_created=date.today())
+        Card(
+            title='Start the project',
+            description='Stage 1 - Create ERD',
+            date_created=date.today()
+        ),
+        Card(
+            title='ORM Queries', 
+            description='Stage 2 - Implement CRUD',
+            date_created=date.today()
+        ), 
+        Card(title='Marsmallow',
+             description='Stage 3 - Implement JSONify of models',
+             date_created=date.today()
+        )
     ]
 
     # db.session.add(card) # This is like the 'add' (stage) in git
@@ -66,7 +77,14 @@ def db_create():
 
     db.session.commit() # This is like the 'commit' in git
 
-# @app.cli.command('all_cards')
+@app.cli.command('all_cards')
+def all_cards():
+    stmt = db.select(Card).where(db.or_(Card.id < 3, Card.description != 'Done'))
+    print(stmt)
+    cards = db.session.scalars(stmt)
+    for card in cards:
+        print(card.title)
+
 @app.route('/cards')
 def all_cards():
     # The purpose is to make a query using ORM equivalent to the sql command 'select * from cards;'
