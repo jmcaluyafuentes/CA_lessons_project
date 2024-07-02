@@ -11,6 +11,7 @@ console.log(maxTemp)
 // -----------------------------------------
 // Topic: Scope
 console.log('------------------------------')
+console.log('Topic: Scope')
 
 x = 'Sarah'
 
@@ -33,6 +34,7 @@ z = 'Sarah'
 // -----------------------------------------
 // Topic: Index, slice
 console.log('------------------------------')
+console.log('Topic: Index, slice')
 
 let str = 'Hello World!'
 console.log(str.indexOf('l'))
@@ -46,6 +48,7 @@ console.log(str) // The replace method above is non-destructive
 // -----------------------------------------
 // Topic: String interpolation
 console.log('------------------------------')
+console.log('Topic: String interpolation')
 
 // Python: print(f'Hello, {firstName}')
 let firstName = 'John'
@@ -55,8 +58,24 @@ console.log(`Hello, ${5 + 10}!`) // Anything valid expressions can go inside the
 
 
 // -----------------------------------------
+// Topic: String interpolation
+console.log('------------------------------')
+console.log('Topic: String interpolation - Example 2')
+
+const item = 'laptop';
+const price = 1200;
+
+const receipt = `Item: ${item}
+Price: $${price}
+Thank you for your purchase!`;
+
+console.log(receipt);
+
+
+// -----------------------------------------
 // Topic: Basic Arithmetic
 console.log('------------------------------')
+console.log('Topic: Basic Arithmetic')
 
 console.log(3 / 2) // 1.5 <-- floating point division
 console.log(Math.floor(3 / 2)) // 1 <-- truncate or round down
@@ -76,6 +95,7 @@ console.log(a)
 // -----------------------------------------
 // Difference between pre and post increment
 console.log('------------------------------')
+console.log('Topic: Difference between pre and post increment')
 
 let b = 10
 console.log(b++) // 10 <-- It retrieves the value of b and outputs it in console before incrementing it
