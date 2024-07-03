@@ -154,7 +154,7 @@ console.log(d[d.length-1]) // Hello
 
 
 // -----------------------------------------
-// Topic: Array
+// Topic: Function
 console.log('------------------------------')
 console.log('Topic: Function')
 
@@ -168,15 +168,15 @@ function add(x, y) {
 
 console.log(add(10, 7)) // 17
 
-// -----------------------------------------
-// Topic: Array
-console.log('------------------------------')
-console.log('Topic: Arrow Function')
-
 function subtract(x, y) { return x + y } // JS does not require indentation unlike Python where indentation is part of syntax.
                                          // This format is only advisable for a single expression
 
 console.log(subtract(10, 7)) // 3
+
+// -----------------------------------------
+// Topic: Arrow Function
+console.log('------------------------------')
+console.log('Topic: Arrow Function')
 
 
 const multiply = (x, y) => { return x * y } // Inline anonymous function
@@ -191,3 +191,198 @@ console.log(division(10, 5)) // 2
 // Shortcut for arrow function - if only one parameter
 const multiplyByTwo = x => x * 2
 console.log(multiplyByTwo(2)) // 4
+
+// -----------------------------------------
+// Day 2: Tuesday 3/7/24
+// Topic: Map method
+console.log('------------------------------')
+console.log('Day 2: Tuesday 3/7/24')
+console.log('------------------------------')
+console.log('Topic: Functions are first class objects')
+console.log('Topic: Map method')
+
+const square = x => x ** 2
+
+console.log(square(10)) // 100
+
+const numbers = [1, 2, 3, 4]
+const result = numbers.map(square) 
+console.log(result) // [1, 4, 9, 16]
+
+const result1 = numbers.map(x => x ** 2)
+console.log(result1) // [1, 4, 9, 16]
+
+// -----------------------------------------
+// Topic: Destructure
+console.log('------------------------------')
+console.log('Topic: Functions are first class objects')
+console.log('Example 2.1 -- hardcode but prone to error')
+
+const people = ['Matt', 'John', 'Mary', 'Kate']
+
+const name1 = people[0]
+const name2 = people[1]
+
+console.log(name1, name2) // Matt John
+
+// -----------------------------------------
+// Topic: Destructure
+console.log('------------------------------')
+console.log('Topic: Functions are first class objects')
+console.log('Example 2.2 -- descriptive identifiers but still prone to error')
+
+const people1 = ['Matt', 'John', 'Mary', 'Kate']
+
+const first = people[0] // identifiers are more descriptive
+const second = people[1]
+
+console.log(first, second) // Matt John
+
+// -----------------------------------------
+// Topic: Destructure
+console.log('------------------------------')
+console.log('Topic: Functions are first class objects')
+console.log('Example 2.3 -- Destructure') // To prevent errors in hardcoding identifiers
+
+const people2 = ['Matt', 'John', 'Mary', 'Kate']
+
+const [first2, second2] = people
+
+console.log(first2, second2) // Matt John 
+
+// -----------------------------------------
+// Topic: Destructure
+console.log('------------------------------')
+console.log('Topic: Functions are first class objects')
+console.log('Example 2.3 -- Destructure - example 2') // To prevent errors in hardcoding identifiers
+
+const people3 = ['Matt', 'John', 'Mary', 'Kate']
+
+const [first3, second3, ...foo] = people // '...' is called rest operator
+
+console.log(first3, second3, foo) // Matt John [ 'Mary', 'Kate' ]
+
+// -----------------------------------------
+// Topic: Concatenate arrays
+console.log('------------------------------')
+console.log('Topic: Concatenate arrays - wrong way')
+
+const bobBirds = ['Robin', 'Crow']
+const sallyBirds = ['Bluejay', 'Cardinal']
+
+// Python: bobBirds + sallyBirds
+
+const allBirds = bobBirds + sallyBirds // <-- + coercized the arrays into strings
+
+console.log(allBirds) // Robin,CrowBluejay,Cardinal 
+console.log(typeof allBirds) // string
+
+// -----------------------------------------
+// Topic: Concatenate arrays
+console.log('------------------------------')
+console.log('Topic: Concatenate arrays')
+
+const bobBirds1 = ['Robin', 'Crow']
+const sallyBirds1 = ['Bluejay', 'Cardinal']
+
+// Python: bobBirds + sallyBirds
+
+const allBirds1 = bobBirds1.concat(sallyBirds1) // <-- + coercized the arrays into strings
+
+console.log(allBirds1) // [ 'Robin', 'Crow', 'Bluejay', 'Cardinal' ]
+console.log(typeof allBirds1) // object
+
+// -----------------------------------------
+// Topic: Concatenate arrays and spread operator
+console.log('------------------------------')
+console.log('Topic: Concatenate arrays - using spread or expansion operator')
+
+const bobBirds2 = ['Robin', 'Crow']
+const sallyBirds2 = ['Bluejay', 'Cardinal']
+
+// Python: bobBirds + sallyBirds
+
+const allBirds2 = bobBirds2.concat(sallyBirds2) // <-- + coercized the arrays into strings
+
+console.log(...allBirds2) // Robin Crow Bluejay Cardinal
+console.log(typeof allBirds2) // object
+
+// -----------------------------------------
+// Topic: Concatenate arrays and spread operator (method 2)
+console.log('------------------------------')
+console.log('Topic: Concatenate arrays - using spread or expansion operator - Method 2')
+console.log('***This technique will be useful in React JS***')
+
+const bobBirds3 = ['Robin', 'Crow']
+const sallyBirds3 = ['Bluejay', 'Cardinal']
+
+// Python: bobBirds + sallyBirds
+
+const allBirds3 = [...bobBirds3, ...sallyBirds3] // <-- '+' coercized the arrays into strings
+
+console.log(allBirds3) // [ 'Robin', 'Crow', 'Bluejay', 'Cardinal' ]
+console.log(typeof allBirds3) // object
+
+// -----------------------------------------
+// Topic: Concatenate arrays and spread operator (method 2)
+console.log('------------------------------')
+console.log('Topic: Concatenate arrays - using spread or expansion operator - Method 2 - Example 2')
+console.log('***This technique will be useful in React JS***')
+
+const bobBirds4 = ['Robin', 'Crow'] // What we're declaring const is the object itself and not the values. 
+                                    // Array are data structures and not data types
+                                    // You cannot change an array into another data structure if declared as const
+                                    // If you want also the contents of an array to be immutable or cant change, you can make it freeze
+const sallyBirds4 = ['Bluejay', 'Cardinal']
+
+// Python: bobBirds + sallyBirds
+
+const allBirds4 = [...bobBirds4, 'Bulba', ...sallyBirds4, 'Pickachu'] // <-- + coercized the arrays into strings
+
+console.log(allBirds4) // [ 'Robin', 'Crow', 'Bulba', 'Bluejay', 'Cardinal', 'Pickachu' ]
+console.log(typeof allBirds4) // object
+
+// -----------------------------------------
+// Topic: Concatenate arrays and spread operator (method 2)
+console.log('------------------------------')
+console.log('Another example')
+
+const me = {name: 'Matt', age: 51, favouriteColor: 'red'}
+const address = {city: 'Brisbase', state: 'QLD'}
+
+const thisPerson = {...me, ...address}
+
+console.log(typeof thisPerson) // object
+console.log(thisPerson)     //{
+                            //    name: 'Matt',
+                            //    age: 51,
+                            //    favouriteColor: 'red',
+                            //    city: 'Brisbase',
+                            //    state: 'QLD'
+                            //  }               
+
+// -----------------------------------------
+// Topic: Concatenate arrays and spread operator (method 2)
+console.log('------------------------------')
+console.log('Another example')
+
+const me1 = {name: 'Matt', age: 51, favouriteColor: 'red'}
+const address1 = {city: 'Brisbase', state: 'QLD'}
+
+const thisPerson1 = {...me, ...address, city: 'Melbourne'}
+
+console.log(typeof thisPerson1) // object
+console.log(thisPerson1)    //{
+                            //    name: 'Matt',
+                            //    age: 51,
+                            //    favouriteColor: 'red',
+                            //    city: 'Melbourne',       <-- value of city has been updated
+                            //    state: 'QLD'
+                            //  }
+
+
+
+
+
+
+
