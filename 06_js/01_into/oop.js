@@ -211,24 +211,89 @@ console.log('------------------------------')
 console.log('Topic: Class - Example (Rectangle) 2 - corrected 2')
 
 class Rectangle2 {
+    #width      // Declare the private in the class
+    #height
+
     constructor(width, height) {
-        this.width = width
-        this.height = height
+        this.#width = width // '#' sets width as a private
+        this.#height = height
+    }
+
+    get width() { return this.#width}
+
+    set width(value) {
+        if (typeof value === 'number') {
+            this.#width = value
+        } else {
+            // Raise exception
+            console.log('Invalid value - must be a number')
+        }
     }
 
     get area() { // Adding a keyword 'get' makes it a get property
-        return this.width * this.height
+        return this.#width * this.#height
     }                                                         
 }                                                             
 
-const rect2 = new Rectangle1(10, 20)
+const rect2 = new Rectangle2(10, 20)
 rect2.area = 5 // It will change the area since area is getter
 console.log(rect2.area) // 200
 
 rect2.width = 5
 console.log(rect2.area) // 100
 
-rect2.width = 'hi'
-console.log(rect2.area) // NaN <-- Not a Number
+rect2.width = 'hi' // Invalid value - must be a number <-- Error
+
+// -----------------------------------------
+// Topic: Class
+console.log('------------------------------')
+console.log('Topic: Class - Inheritance')
+
+class Rectangle3 {
+    #width      // Declare the private in the class
+    #height
+
+    constructor(width, height) {
+        this.#width = width // '#' sets width as a private
+        this.#height = height
+    }
+
+    get width() { return this.#width}
+
+    set width(value) {
+        if (typeof value === 'number') {
+            this.#width = value
+        } else {
+            // Raise exception
+            console.log('Invalid value - must be a number')
+        }
+    }
+
+    get area() { // Adding a keyword 'get' makes it a get property
+        return this.#width * this.#height
+    }                                                         
+}     
+
+// Python
+// class Square(Rectangle)
+
+class Square extends Rectangle3 { // Keyword 'extends' for class inheritance
+    #width  // Declare it in child class since it is private in superclass
+    #height
+    
+    constructor(size=5) { // default parameter
+        super(size, size) // This calls the super constructor and passes the value size into width and height
+    }
+}
+
+const rect4 = new Square(10) // positional parameter
+console.log(rect4.area) // 100
+
+const rect5 = new Square()
+console.log(rect5.area) // 25
+
+const rect6 = new Square(size=6) // keyword parameter
+console.log(rect6.area) // 36
+
 
 
