@@ -71,15 +71,164 @@ console.log('Topic: Objects - Example 2.3 - Create own constructor function')
 function Person(name, age) {    // Person (capital letter) is a convention for constructor function
     this.name = name
     this.age = age
+
+    this.greet = () => {
+        console.log(`${name} is ${age} years old.`) // The name and age are referring to the parameters and not the attributes from this.name and this.age
+    }
 }
 
 const person3 = new Person('John', 35) // <-- constructor function
 
-console.log(person3)        // { name: 'John', age: 35 }
-console.log(typeof person3) // object
+person3.greet()                        // John is 35 years old.
+
+person3.age = 36
+person3.greet()                        // John is 35 years old. <-- the age was not change in the greet method
+console.log(person3.age)                // John is 36 years old.
+
+// -----------------------------------------
+// Topic: Object
+console.log('------------------------------')
+console.log('Topic: Objects - Example 2.3.1 - Create own constructor function - The corrected method in greet')
+
+// Python:
+// class Person:
+//      def __init__(self, name, age):
+//          self.name = name
+//          self.age = age
+//
+// person = Person('John', 35)
+
+function Person1(name, age) {    // Person (capital letter) is a convention for constructor function
+    this.name = name
+    this.age = age
+
+    this.greet = () => {
+        console.log(`${this.name} is ${this.age} years old.`) // Now, the name and age are referring to the attributes from this.name and this.age
+    }                                                         // The issue is there are my instances of the object, the greet method will be replicated in each instance
+}
+
+const person4 = new Person1('John', 35) // <-- constructor function
+
+person4.greet()                        // John is 35 years old.
+
+person4.age = 36
+person4.greet()                        // John is 35 years old. <-- the age was not change in the greet method
+console.log(person4.age)                // John is 36 years old.
+
+// -----------------------------------------
+// Topic: Class
+console.log('------------------------------')
+console.log('Topic: Class - Example 2.3.2 - Create own constructor function - The corrected method in greet - Resolve the issue by use of a class')
+
+// Python:
+// class Person:
+//      def __init__(self, name, age):
+//          self.name = name
+//          self.age = age
+//
+// person = Person('John', 35)
+
+// function Person2(name, age) {    // Person (capital letter) is a convention for constructor function
+//     this.name = name
+//     this.age = age
+
+//     this.greet = () => {
+//         console.log(`${this.name} is ${this.age} years old.`) // Now, the name and age are referring to the attributes from this.name and this.age
+//     }
+// }
+
+class Person2 {
+    constructor(name, age) { // Constructor function (with keyword 'constructor') inside a class. Remove the keyword 'function'
+        this.name = name
+        this.age = age
+    }
+
+    greet() { // Remove the 'function' keyword
+        console.log(`${this.name} is ${this.age} years old.`) // If we forget to add the 'this' keyword, it will catch an error 'ReferenceError: name is not defined'
+    }                                                         // The parameters name and age in constructor function are scope within it. The greet method must use 'this' to access them.
+}                                                             // The greet method will only have one in memory and is shared by instances of the class.
+
+const person5 = new Person2('John', 35) // <-- constructor function
+
+person5.greet()                        // John is 35 years old.
+
+person5.age = 36
+person5.greet()                        // John is 35 years old. <-- the age was not change in the greet method
+console.log(person5.age)                // John is 36 years old.
+
+// -----------------------------------------
+// Topic: Class
+console.log('------------------------------')
+console.log('Topic: Class - Example (Rectangle) - with error')
+
+class Rectangle {
+    constructor(width, height) {
+        this.width = width
+        this.height = height
+    }
+
+    area() {
+        return this.width * this.height
+    }                                                         
+}                                                             
+
+const rect = new Rectangle(10, 20)
+rect.area = 5
+// console.log(rect.area()) // TypeError: rect.area is not a function
+
+// ~~ Review the explanation in recorded class video
 
 
+// -----------------------------------------
+// Topic: Class
+console.log('------------------------------')
+console.log('Topic: Class - Example (Rectangle) 2 - corrected')
 
+class Rectangle1 {
+    constructor(width, height) {
+        this.width = width
+        this.height = height
+    }
 
+    get area() { // Adding a keyword 'get' makes it a get property
+        return this.width * this.height
+    }                                                         
+}                                                             
+
+const rect1 = new Rectangle1(10, 20)
+rect1.area = 5 // It will change the area since area is getter
+console.log(rect1.area) // 200
+
+rect1.width = 5
+console.log(rect1.area) // 100
+
+rect1.width = 'hi'
+console.log(rect1.area) // NaN <-- Not a Number
+
+// -----------------------------------------
+// Topic: Class
+console.log('------------------------------')
+console.log('Topic: Class - Example (Rectangle) 2 - corrected 2')
+
+class Rectangle2 {
+    constructor(width, height) {
+        this.width = width
+        this.height = height
+    }
+
+    get area() { // Adding a keyword 'get' makes it a get property
+        return this.width * this.height
+    }                                                         
+}                                                             
+
+const rect2 = new Rectangle1(10, 20)
+rect2.area = 5 // It will change the area since area is getter
+console.log(rect2.area) // 200
+
+rect2.width = 5
+console.log(rect2.area) // 100
+
+rect2.width = 'hi'
+console.log(rect2.area) // NaN <-- Not a Number
 
 
